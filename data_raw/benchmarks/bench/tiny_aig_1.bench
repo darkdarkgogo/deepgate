@@ -1,0 +1,7 @@
+INPUT(a)
+INPUT(b)
+INPUT(c)
+OUTPUT(out)
+n1 = NOT(a)
+n2 = AND(n1, b)
+out = AND(n2, c)
