@@ -93,10 +93,10 @@ def add_skip_connection(x, edge_index, edge_attr, ehs):
     for (ind, node) in enumerate(x):
         if node[7] == 1:
             d = ind
-            s = node[8]
+            s = int(node[8])
             new_edge =  torch.tensor([s, d], dtype=torch.long).unsqueeze(0)
             edge_index = torch.cat((edge_index, new_edge), dim=0)
-            ll_diff = node[2] - x[int(node[8])][2]
+            ll_diff = node[2] - x[s][2]
             new_attr = add_edge_attr(1, ehs, ll_diff)
             edge_attr = torch.cat([edge_attr, new_attr], dim=0)
     return edge_index, edge_attr
