@@ -66,10 +66,11 @@ def remove(initial_sources):
 
 
 def one_hot(idx, length):
+    length = int(length)
     if type(idx) is int:
         idx = torch.LongTensor([idx]).unsqueeze(0)
     else:
-        idx = torch.LongTensor(idx).unsqueeze(0).t()
+        idx = torch.LongTensor(np.asarray(idx, dtype=np.int64)).unsqueeze(0).t()
     x = torch.zeros((len(idx), length)).scatter_(1, idx, 1)
     return x
 
@@ -102,6 +103,8 @@ def add_skip_connection(x, edge_index, edge_attr, ehs):
 
 
 def add_edge_attr(num_edge, ehs, ll_diff=1):
+    num_edge = int(num_edge)
+    ehs = int(ehs)
     positional_embeddings = torch.zeros(num_edge, ehs)
     for position in range(num_edge):
         for i in range(0, ehs, 2):

@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+
+exp/
+
+data/benchmarks/merged/1_1_0_10_1_0_3_16_0_0/
+data/benchmarks/merged/1_1_0_10_1_0_3_16_1_0/

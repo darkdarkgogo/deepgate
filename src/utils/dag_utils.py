@@ -8,6 +8,7 @@ import numpy
 # assume nodes consecutively named starting at 0
 #
 def top_sort(edge_index, graph_size):
+    graph_size = int(graph_size)
 
     node_ids = numpy.arange(graph_size, dtype=int)
 
@@ -78,6 +79,7 @@ def add_order_info(graph):
     graph.__setattr__("bi_layer_index", torch.stack([layers, layers2], dim=0))
 
 def return_order_info(edge_index, num_nodes):
+    num_nodes = int(num_nodes)
     ns = torch.LongTensor([i for i in range(num_nodes)])
     forward_level = top_sort(edge_index, num_nodes)
     ei2 = torch.LongTensor([list(edge_index[1]), list(edge_index[0])])
